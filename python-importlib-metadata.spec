@@ -14,6 +14,7 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
 BuildRequires:	python3dist(setuptools-scm)
 BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(zipp)
 
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
