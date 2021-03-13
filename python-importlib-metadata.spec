@@ -36,7 +36,6 @@ rm -rf %{pypi_name}.egg-info
 %py_install
 
 %files
-%license LICENSE
 %doc README.rst CHANGES.rst
 %{python_sitelib}/*egg-info
 %{python_sitelib}/%{pypi_name}
