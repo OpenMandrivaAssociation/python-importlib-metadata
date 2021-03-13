@@ -23,7 +23,7 @@ Along with importlib.resources in Python 3.7 and newer (backported as importlib_
 this can eliminate the need to use the older and less efficient pkg_resources package.
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n importlib_metadata-%{version}
 
 # drop bundled egg-info
 rm -rf %{pypi_name}.egg-info
