@@ -2,19 +2,22 @@
 
 Name:		python-%{pypi_name}
 Summary:	Library to access the metadata for a Python package.
-Version:	3.7.2
-Release:	2
+Version:	4.12.0
+Release:	1
 Group:		Development/Python
 License:	Apache 2.0
 URL:		https://github.com/python/importlib_metadata
-Source0:	https://files.pythonhosted.org/packages/48/18/08eaa583eb21602e86e32d534fa7f40159774566037e60a69822b10ef3ad/importlib_metadata-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
 BuildArch:	noarch
 
 BuildRequires:	pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:	python3dist(setuptools-scm)
-BuildRequires:  python3dist(pip)
-BuildRequires:  python3dist(zipp)
+BuildRequires:	python%{py_ver}dist(setuptools)
+BuildRequires:	python%{py_ver}dist(setuptools-scm)
+BuildRequires:  python%{py_ver}dist(pip)
+BuildRequires:  python%{py_ver}dist(zipp)
+BuildRequires:	python%{py_ver}dist(tomli)
+BuildRequires:	python-pip
+BuildRequires:	python-wheel
 
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
@@ -25,18 +28,19 @@ Along with importlib.resources in Python 3.7 and newer (backported as importlib_
 this can eliminate the need to use the older and less efficient pkg_resources package.
 
 %prep
-%setup -q -n importlib_metadata-%{version}
+%autosetup -p1 -n importlib_metadata-%{version}
 
 # drop bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
 %build
-%py_build
+mkdir wheels
+pip wheel --wheel-dir wheels --no-deps --no-build-isolation --verbose .
 
 %install
-%py_install
+pip install --root=%{buildroot} --no-deps --verbose --ignore-installed --no-warn-script-location --no-index --no-cache-dir --find-links wheels wheels/*.whl
 
 %files
 %doc README.rst CHANGES.rst
-%{python_sitelib}/*egg-info
+%{python_sitelib}/*dist-info
 %{python_sitelib}/importlib_metadata
