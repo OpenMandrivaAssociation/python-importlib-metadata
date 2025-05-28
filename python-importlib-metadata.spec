@@ -2,12 +2,12 @@
 
 Name:		python-%{pypi_name}
 Summary:	Library to access the metadata for a Python package.
-Version:	5.2.0
-Release:	2
+Version:	8.7.0
+Release:	1
 Group:		Development/Python
 License:	Apache 2.0
 URL:		https://github.com/python/importlib_metadata
-Source0:	https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
+Source0:	https://github.com/python/importlib_metadata/archive/refs/tags/v%{version}.tar.gz
 BuildArch:	noarch
 
 BuildRequires:	pkgconfig(python)
