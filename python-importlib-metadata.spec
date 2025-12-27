@@ -3,8 +3,8 @@
 
 Name:		python-%{pypi_name}
 Summary:	Library to access the metadata for a Python package.
-Version:	8.7.0
-Release:	2
+Version:	8.7.1
+Release:	1
 Group:		Development/Python
 License:	Apache 2.0
 URL:		https://github.com/python/importlib_metadata
