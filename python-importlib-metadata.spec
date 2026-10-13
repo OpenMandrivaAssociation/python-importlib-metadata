@@ -4,7 +4,7 @@
 Name:		python-importlib-metadata
 Summary:	Library to access the metadata for a Python package
 Version:	9.0.0
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	Apache-2.0
 URL:		https://github.com/python/importlib_metadata
